@@ -1,88 +1,51 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset='utf-8'>
+  <body>
+    <script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+    <script src="javascripts/jquery-1.7.min.js"></script>
+    <script src="javascripts/easing.js"></script>
+    <script src='javascripts/Three.js'></script>
+    <script src='javascripts/RequestAnimationFrame.js'></script>
+    <script src='javascripts/Stats.js'></script>
+    <script src='javascripts/demo.js'></script>
 
-  <title>thbar/playground @ GitHub</title>
-
-  <style type="text/css">
-    body {
-      margin-top: 1.0em;
-      background-color: #85db82;
-      font-family: Helvetica, Arial, FreeSans, san-serif;
-      color: #000000;
-    }
-    #container {
-      margin: 0 auto;
-      width: 700px;
-    }
-    h1 { font-size: 3.8em; color: #7a247d; margin-bottom: 3px; }
-    h1 .small { font-size: 0.4em; }
-    h1 a { text-decoration: none }
-    h2 { font-size: 1.5em; color: #7a247d; }
-    h3 { text-align: center; color: #7a247d; }
-    a { color: #7a247d; }
-    .description { font-size: 1.2em; margin-bottom: 30px; margin-top: 30px; font-style: italic;}
-    .download { float: right; }
-    pre { background: #000; color: #fff; padding: 15px;}
-    hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
-    .footer { text-align:center; padding-top:30px; font-style: italic; }
-  </style>
-</head>
-
-<body>
-  <a href="https://github.com/thbar/playground"><img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub" /></a>
-
-  <div id="container">
-
-    <div class="download">
-      <a href="https://github.com/thbar/playground/zipball/master">
-        <img border="0" width="90" src="https://github.com/images/modules/download/zip.png"></a>
-      <a href="https://github.com/thbar/playground/tarball/master">
-        <img border="0" width="90" src="https://github.com/images/modules/download/tar.png"></a>
-    </div>
-
-    <h1><a href="https://github.com/thbar/playground">playground</a>
-      <span class="small">by <a href="https://github.com/thbar">thbar</a></span></h1>
-
-    <div class="description">
+    <!-- 
+      first static version only for mp3 enabled browsers
+      TODO - use http://neutroncreations.com/blog/building-a-custom-html5-audio-player-with-jquery/ instead 
+      http://html5doctor.com/native-audio-in-the-browser/
+    -->
+    <audio>
+        <source src="audio/TheGrind.mp3" type="audio/mpeg"></source>
+    </audio>
+    <style type="text/css">
+      body {
+        font-family: Helvetica, Arial, sans-serif;
+      }
+      h2, p {
+        text-align: center;
+        margin-bottom: 0;
+      }
+      p {
+        margin: 0;
+        font-size: 10px;
+      }
+      #beatcount {
+        padding: 0px 5px;
+        margin-right: 15px;
+        color: #aaa;
+        background-color: #F7F7F7;
+        -webkit-border-radius: 5px;
+        border: 1px solid #F0F0F0;
+      }
+    </style>
+    <h2><span id="beatcount"></span>Dancing cubes in rhythm
       
-    </div>
-
-    
-
-    
-
-    
-
-    
-
-    
-      <h2>Authors</h2>
-      <p>Thibaut Barrère (thibaut.barrere@gmail.com)<br/>      </p>
-    
-
-    
-      <h2>Contact</h2>
-      <p>Thibaut Barrère (thibaut.barrere@gmail.com)<br/>      </p>
-    
-
-    <h2>Download</h2>
-    <p>
-      You can download this project in either
-      <a href="https://github.com/thbar/playground/zipball/master">zip</a> or
-      <a href="https://github.com/thbar/playground/tarball/master">tar formats.
-    </p>
-    <p>You can also clone the project with <a href="http://git-scm.com">Git</a>
-      by running:
-      <pre>$ git clone git://github.com/thbar/playground</pre>
-    </p>
-
-    <div class="footer">
-      get the source code on GitHub : <a href="https://github.com/thbar/playground">thbar/playground</a>
-    </div>
-
-  </div>
-
-</body>
+      <a href="https://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="thibaut_barrere" data-text="Audio-synced dancing cubes in CoffeeScript with Three.js">Tweet</a>
+    </h2>
+    <p>A quick tempo-sync experiment (only tested on Chrome) using three.js, html5 audio, coffeescript and the jQuery easing functions for extra bounciness.
+      See the <a href="http://github.com/thbar/playground">README</a> for more details.
+      </p>
+    <div id="container"/>
+    <a href="http://github.com/thbar/playground"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://a248.e.akamai.net/assets.github.com/img/bec6c51521dcc8148146135149fe06a9cc737577/687474703a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub"></a>
+  </body>
 </html>
