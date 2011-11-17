@@ -1,3 +1,19 @@
+class Sound
+  constructor: (audio, bpm) ->
+    @audio = audio
+    @bpm = bpm
+
+  play: ->
+    @audio.play()
+    
+  currentTime: -> @audio.currentTime
+  
+  currentFloatBeat: ->
+    @audio.currentTime / (60.0 / @bpm)
+    
+  currentBeat: ->
+    Math.floor(@.currentFloatBeat())
+    
 class Engine
   constructor: () ->
     @container = document.body
