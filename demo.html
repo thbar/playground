@@ -1,5 +1,6 @@
 <html>
   <body>
+    <script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
     <script src="javascripts/jquery-1.7.min.js"></script>
     <script src="javascripts/easing.js"></script>
     <script src='javascripts/Three.js'></script>
@@ -19,16 +20,31 @@
       body {
         font-family: Helvetica, Arial, sans-serif;
       }
+      h2, p {
+        text-align: center;
+        margin-bottom: 0;
+      }
+      p {
+        margin: 0;
+        font-size: 10px;
+      }
       #beatcount {
-        display: inline;
-        padding: 5px 5px;
+        padding: 0px 5px;
+        margin-right: 15px;
         color: #aaa;
         background-color: #F7F7F7;
         -webkit-border-radius: 5px;
         border: 1px solid #F0F0F0;
       }
     </style>
-    <div id="beatcount">Hello world</div>
+    <h2><span id="beatcount"></span>Dancing cubes in rhythm
+      
+      <a href="https://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="thibaut_barrere" data-text="Audio-synced dancing cubes in CoffeeScript with Three.js">Tweet</a>
+    </h2>
+    <p>A quick tempo-sync experiment (only tested on Chrome) using three.js, html5 audio, coffeescript and the jQuery easing functions for extra bounciness.
+      See the <a href="http://github.com/thbar/playground">README</a> for more details.
+      </p>
     <div id="container"/>
+    <a href="http://github.com/thbar/playground"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://a248.e.akamai.net/assets.github.com/img/bec6c51521dcc8148146135149fe06a9cc737577/687474703a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub"></a>
   </body>
 </html>
