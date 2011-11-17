@@ -30,12 +30,26 @@ class Engine
     @container.append(@renderer.domElement)
 
   setupMeshes: ->
-    geometry = new THREE.CubeGeometry(200, 200, 200)
-    material = new THREE.MeshBasicMaterial({color: 0xff0000, wireframe: true })
-
-    @mesh = new THREE.Mesh(geometry, material)
-    @scene.add(@mesh)
-
+    @group = new THREE.Object3D
+    material = new THREE.MeshNormalMaterial
+    geometry = new THREE.CubeGeometry(100, 100, 100)
+    
+    @meshes = []
+    
+    i = 0
+    while i <= 20
+      i += 1
+      mesh = new THREE.Mesh(geometry, material)
+      mesh.position.x = Math.random() * 1000 - 500
+      mesh.position.y = Math.random() * 1000 - 500
+      mesh.position.z = Math.random() * 1000 - 500
+      mesh.rotation.x = Math.random() * 360 * (Math.PI / 180)
+      mesh.rotation.y = Math.random() * 360 * (Math.PI / 180)
+      @meshes.push(mesh) # TODO - use the group to iterate instead
+      @group.add(mesh)
+    
+    @scene.add(@group)
+    
   setupStats: ->
     @stats = new Stats
     @stats.domElement.style.position = 'absolute'
@@ -59,14 +73,16 @@ class Engine
     freq = 2
     currentTime = (@.sound.currentFloatBeat() % freq)
     odd = (@.sound.currentFloatBeat() % (freq * 2)) >= freq
-    
+  
     start = 0
     end = 0.5
     [start, end] = [end, start] if odd
     x = $.easing.easeOutBounce(null, currentTime, start, end - start, freq)
-    
-    @mesh.rotation.x = x
-    @mesh.rotation.y += 0.02
+
+    for mesh in @meshes
+      mesh.rotation.x = x
+      mesh.rotation.y += 0.02
+      mesh.rotation.z = 3 * x
     
     @renderer.render(@scene, @camera)
     @stats.update() if @stats

@@ -47,14 +47,24 @@
     };
 
     Engine.prototype.setupMeshes = function() {
-      var geometry, material;
-      geometry = new THREE.CubeGeometry(200, 200, 200);
-      material = new THREE.MeshBasicMaterial({
-        color: 0xff0000,
-        wireframe: true
-      });
-      this.mesh = new THREE.Mesh(geometry, material);
-      return this.scene.add(this.mesh);
+      var geometry, i, material, mesh;
+      this.group = new THREE.Object3D;
+      material = new THREE.MeshNormalMaterial;
+      geometry = new THREE.CubeGeometry(100, 100, 100);
+      this.meshes = [];
+      i = 0;
+      while (i <= 20) {
+        i += 1;
+        mesh = new THREE.Mesh(geometry, material);
+        mesh.position.x = Math.random() * 1000 - 500;
+        mesh.position.y = Math.random() * 1000 - 500;
+        mesh.position.z = Math.random() * 1000 - 500;
+        mesh.rotation.x = Math.random() * 360 * (Math.PI / 180);
+        mesh.rotation.y = Math.random() * 360 * (Math.PI / 180);
+        this.meshes.push(mesh);
+        this.group.add(mesh);
+      }
+      return this.scene.add(this.group);
     };
 
     Engine.prototype.setupStats = function() {
@@ -70,7 +80,7 @@
     };
 
     Engine.prototype.render = function() {
-      var currentBeat, currentTime, end, freq, odd, pattern, patternPos, start, x, _ref;
+      var currentBeat, currentTime, end, freq, mesh, odd, pattern, patternPos, start, x, _i, _len, _ref, _ref2;
       currentBeat = this.sound.currentBeat();
       if (currentBeat !== this.previousBeat) {
         this.previousBeat = currentBeat;
@@ -85,8 +95,13 @@
       end = 0.5;
       if (odd) _ref = [end, start], start = _ref[0], end = _ref[1];
       x = $.easing.easeOutBounce(null, currentTime, start, end - start, freq);
-      this.mesh.rotation.x = x;
-      this.mesh.rotation.y += 0.02;
+      _ref2 = this.meshes;
+      for (_i = 0, _len = _ref2.length; _i < _len; _i++) {
+        mesh = _ref2[_i];
+        mesh.rotation.x = x;
+        mesh.rotation.y += 0.02;
+        mesh.rotation.z = 3 * x;
+      }
       this.renderer.render(this.scene, this.camera);
       if (this.stats) return this.stats.update();
     };
