@@ -8,3 +8,5 @@ It works (currently on Chrome) - here are the key points:
 * the jQuery easing functions are used to bounce the cubes
 
 Follow the author on Twitter! [thibaut_barrere](http://www.twitter.com/thibaut_barrere)
+
+License: MIT for the code, Creative Commons Attribution-NonCommercial-ShareAlike 3.0 for the music.
